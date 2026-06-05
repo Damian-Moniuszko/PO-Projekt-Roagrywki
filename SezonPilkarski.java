@@ -5,8 +5,14 @@ public class SezonPilkarski {
     protected List<Klub> listaKlubow;
     protected List<KolejkaLigowa> terminarz;
 
+    public SezonPilkarski(String nazwa){
+        this.nazwaSezonu = nazwa;
+        this.listaKlubow = new ArrayList<>();
+        this.terminarz = new ArrayList<>();
+    }
     public void zarejestrujKlub(Klub k){
-
+        listaKlubow.add(k);
+        System.out.println("DODANO KLUB: "+k.pobierzNazwe());
     }
 
     public void generujTerminarzSezonu(){
@@ -14,7 +20,10 @@ public class SezonPilkarski {
     }
 
     public void generujTabele(){
-
+        System.out.println("Klub | pkt");
+        for(Klub kluby : listaKlubow){
+            System.out.println(kluby.pobierzNazwe() + " | " + kluby.pobierzPunkty());
+        }
     }
 
     public void zapiszStanSezonu(String sciezka){

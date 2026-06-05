@@ -1,12 +1,17 @@
 public class WynikMeczu {
     private int goleGospodarz;
     private int goleGosc;
-
-    public boolean czyRemis(){
-
+    public WynikMeczu(int goleGospodarz, int goleGosc){
+        this.goleGospodarz = goleGospodarz;
+        this.goleGosc = goleGosc;
     }
-
-    public int pobierzRozniceGoli(){
-        
+    public int pobierzGoleGospodarz(){
+        return goleGospodarz;
     }
+    public int pobierzGoleGosc(){
+        return goleGosc;
+    }
+    //public boolean czyRemis(){}
+
+    //public int pobierzRozniceGoli(){}
 }
