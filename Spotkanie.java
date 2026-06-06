@@ -29,12 +29,16 @@ public class Spotkanie {
                 System.out.println("REMIS");
             }
             if(wynik.pobierzGoleGospodarz()<wynik.pobierzGoleGosc()){
-                gospodarz.aktualizujStatystyki(wynik.pobierzGoleGospodarz(), wynik.pobierzGoleGosc(), 1);
+                gospodarz.aktualizujStatystyki(wynik.pobierzGoleGospodarz(), wynik.pobierzGoleGosc(), 0);
                 gosc.aktualizujStatystyki(wynik.pobierzGoleGosc(), wynik.pobierzGoleGospodarz(), 3);
                 System.out.println(gosc.pobierzNazwe());
             }
         }
         
 
+    }
+    public void wypiszInformacje(){
+        System.out.println("===MECZ===");
+        System.out.println(gospodarz.pobierzNazwe()+" vs "+gosc.pobierzNazwe());
     }
 }

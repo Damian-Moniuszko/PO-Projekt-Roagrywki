@@ -18,15 +18,43 @@ public class SezonPilkarski {
     public void generujTerminarzSezonu(){
         List<Klub> listaZapasowa = new ArrayList<>(listaKlubow);
         int liczbaMeczow = listaZapasowa.size()/2;
-        KolejkaLigowa k1 = new KolejkaLigowa(1);
-        for(int i=0;i<liczbaMeczow;i++){
-            Klub gosp = listaZapasowa.get(i);
-            Klub gosc = listaZapasowa.get(listaZapasowa.size()-1-i);
-            Spotkanie spotkanie = new Spotkanie(gosp, gosc);
-            k1.dodajMecz(spotkanie);
+        int liczbaKolejek = listaZapasowa.size()-1;
+        for(int i=0;i<liczbaKolejek;i++){
+            KolejkaLigowa kolejka = new KolejkaLigowa(i);
+            for(int j=0;j<liczbaMeczow;j++){
+                Klub gosp = listaZapasowa.get(j);
+                Klub gosc = listaZapasowa.get(listaZapasowa.size()-1-j);
+                Spotkanie spotkanie = new Spotkanie(gosp, gosc);
+                kolejka.dodajMecz(spotkanie);
+            }
+            terminarz.add(kolejka);
+            Klub ostatni = listaZapasowa.remove(listaZapasowa.size()-1);
+            listaZapasowa.add(1,ostatni);
+        } 
+            
+    }
+    public void wpiszWyniki(int nrKolejki) throws Exception{
+        Scanner sc = new Scanner(System.in); // nowy czytnik
+        KolejkaLigowa k = terminarz.get(nrKolejki-1); //wyciagniecie kolejki o nr - 1, do wpisania wynikow
+        if(k.czyWszystkieMeczeZakonczone()==true){
+                throw new IllegalStateException("BŁĄD, TA KOLEJKA ZOSTAŁA JUŻ ROZEGRANA!"); //blad
+                }
+        for(Spotkanie sp : k.pobierzSpotkanie()){ //petla ktora przechodzi po wszyskich spotkaniach w kolejce
+            try{ 
+                int gosp,gosc;
+                sp.wypiszInformacje();
+                System.out.println("Podaj wynik dla gospodarza: "); //wprowadzenie wyniku dla gospodarza
+                gosp = sc.nextInt();
+                System.out.println("Podaj wynik dla goscia: "); //wprowadzenie wyniku dla goscia
+                gosc = sc.nextInt();
+                sp.wprowadzWynik(gosp, gosc); //wpisanie wynikow
+                sp.pobierzZwyciezce(); //dopisanie goli i pkt do klubow
+            }    
+            catch(IllegalStateException e){
+                System.out.println(e);
+            }
         }
-            
-            
+        k.zakonczKolejke();//zakonczenie kolejki
     }
 
     public void generujTabele(){

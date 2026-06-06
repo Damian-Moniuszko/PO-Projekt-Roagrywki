@@ -11,9 +11,9 @@ public class Klub {
         this.nazwaKlub = nazwaKlub;
     }
     public void aktualizujStatystyki(int strzelone, int stracone, int zdobytePunkty){
-        this.bramkiStrzelone = strzelone;
-        this.bramkiStracone = stracone;
-        this.punkty = zdobytePunkty;
+        this.bramkiStrzelone += strzelone;
+        this.bramkiStracone += stracone;
+        this.punkty += zdobytePunkty;
     }
 
     //public int pobierzinformacje(){
