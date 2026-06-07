@@ -59,7 +59,9 @@ public class SezonPilkarski {
 
     public void generujTabele(){
         boolean informator;
-        System.out.println("Klub | pkt");
+        System.out.println("+-------------------------+-------+");
+        System.out.printf("| %-23s | %-5s |\n", "Klub", "pkt");
+        System.out.println("+-------------------------+-------+");
         //ponizej sortowanie tabeli po punktach, jezeli beda takie same warotsci dla pkt, to po nazwie
         do{
             informator=false;
@@ -82,9 +84,9 @@ public class SezonPilkarski {
             }
         }while(informator==true);
         for(Klub kluby:listaKlubow){
-                System.out.println(kluby.pobierzNazwe()+" | "+kluby.pobierzPunkty()); // wypisanie tabeli
+                System.out.printf("| %-23s | %5s |\n", kluby.pobierzNazwe(), String.valueOf(kluby.pobierzPunkty())); // wypisanie tabeli
             }
-        
+        System.out.println("+-------------------------+-------+");
         
     }
 
