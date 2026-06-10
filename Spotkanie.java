@@ -37,6 +37,25 @@ public class Spotkanie {
         
 
     }
+    public Klub pobierzZwyciezcePuchar(){
+        if(czyRozegrane==false){
+            System.out.println("Mecz nie został rozegrany");
+            return null;
+        }
+        else{
+            if(wynik.pobierzGoleGospodarz()> wynik.pobierzGoleGosc()){
+                return gospodarz;
+            }
+            if(wynik.pobierzGoleGospodarz()<wynik.pobierzGoleGosc()){
+                gospodarz.aktualizujStatystyki(wynik.pobierzGoleGospodarz(), wynik.pobierzGoleGosc(), 0);
+                gosc.aktualizujStatystyki(wynik.pobierzGoleGosc(), wynik.pobierzGoleGospodarz(), 3);
+                return gosc;
+            }
+            else{
+                return gospodarz; // zmienic bo karne!!!!!!!!
+            }
+        }
+    }
     public void wypiszInformacje(){
         System.out.println("===MECZ===");
         System.out.println(gospodarz.pobierzNazwe()+" vs "+gosc.pobierzNazwe());
