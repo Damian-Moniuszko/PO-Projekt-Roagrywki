@@ -11,7 +11,4 @@ public class WynikMeczu {
     public int pobierzGoleGosc(){
         return goleGosc;
     }
-    //public boolean czyRemis(){}
-
-    //public int pobierzRozniceGoli(){}
 }

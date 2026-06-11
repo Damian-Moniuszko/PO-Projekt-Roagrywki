@@ -16,9 +16,13 @@ public class Klub {
         this.punkty += zdobytePunkty;
     }
 
-    //public int pobierzinformacje(){
-        
-    //}
+    public void pobierzinformacje(){
+        System.out.println("===INFORMACJE O KLUBIE===");
+        System.out.println(nazwaKlub);
+        System.out.println("Rozegrane mecze: "+rozegraneMecze);
+        System.out.println("Bramki strzelone: "+bramkiStrzelone);
+        System.out.println("Bramki stracone: "+bramkiStracone);
+    }
 
     public String pobierzNazwe(){
         return nazwaKlub;
