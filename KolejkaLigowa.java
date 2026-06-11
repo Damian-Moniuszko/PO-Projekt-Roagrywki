@@ -1,6 +1,6 @@
-import java.util.*;;
+import java.util.*;
 
-public class KolejkaLigowa {
+public class KolejkaLigowa implements java.io.Serializable {
     private int numerKolejki;
     private List<Spotkanie> meczeWKolejce;
     private boolean czyZakonczona;

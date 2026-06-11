@@ -1,6 +1,6 @@
 import java.util.*;
 
-public abstract class SezonPilkarski {
+public abstract class SezonPilkarski implements java.io.Serializable {
     protected String nazwaSezonu;
     protected List<Klub> listaKlubow;
     protected List<KolejkaLigowa> terminarz;

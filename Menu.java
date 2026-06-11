@@ -26,8 +26,10 @@ public class Menu {
             System.out.println("3. Generuj terminarz/rundę (tylko na początku)");
             System.out.println("4. Wyświetl tabelę / drabinkę");
             System.out.println("5. Wpisz wyniki kolejki / rund");
+            System.out.println("6. Zapis do pliku");
+            System.out.println("7. Odczyt z pliku");
             System.out.println("0. Zakończ");
-            System.out.println("Wybierz opcję: ");
+            System.out.print("Wybierz opcję: ");
 
             if (scanner.hasNextInt()) {
                 wybor = scanner.nextInt();
@@ -64,7 +66,7 @@ public class Menu {
                 break;
             case 5:
                 if (walidujCzySezonIstnieje()) {
-                    System.out.println("Podaj numer kolejki do rozegrania: ");
+                    System.out.print("Podaj numer kolejki do rozegrania: ");
                     if (scanner.hasNextInt()) {
                         int nrKolejki = scanner.nextInt();
                         scanner.nextLine();
@@ -81,6 +83,27 @@ public class Menu {
                     }
                 }
                 break;
+            
+            case 6: 
+                if (walidujCzySezonIstnieje()) {
+                    System.out.print("podaj nazwe pliku (nazwa_pliku.txt): ");
+                    String plikZapis = scanner.nextLine();
+                    ObslugaPlikow.zapiszStan(this.sezon, plikZapis);
+                }
+                break;
+            
+            case 7:
+                System.out.print("Podaj nazwę pliku do odczytu: ");
+                String plikOdczyt = scanner.nextLine();
+
+                SezonPilkarski wczytany = ObslugaPlikow.wczytajStan(plikOdczyt);
+
+                if (wczytany != null) {
+                    this.sezon = wczytany;
+                    this.nastepneIdKlubu = this.sezon.listaKlubow.size() + 1;
+                }
+                break;
+
             case 0:
                 System.out.println("Koniec programu.");
                 break;
@@ -107,7 +130,7 @@ public class Menu {
         }
 
         System.out.println("Wybierz rodzaj rozgrywek:");
-        System.out.println("1. Ekstraklasa (Liga):");
+        System.out.println("1. Ekstraklasa (Liga)");
         System.out.println("2. Puchar Polski (Puchar)");
         System.out.print("Wybierz opcję: ");
 

@@ -1,4 +1,4 @@
-public class WynikMeczu {
+public class WynikMeczu implements java.io.Serializable {
     private int goleGospodarz;
     private int goleGosc;
     public WynikMeczu(int goleGospodarz, int goleGosc){
@@ -11,7 +11,4 @@ public class WynikMeczu {
     public int pobierzGoleGosc(){
         return goleGosc;
     }
-    //public boolean czyRemis(){}
-
-    //public int pobierzRozniceGoli(){}
 }

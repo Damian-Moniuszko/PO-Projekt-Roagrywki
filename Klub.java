@@ -1,4 +1,4 @@
-public class Klub {
+public class Klub implements java.io.Serializable {
     private int idKlub;
     private String nazwaKlub;
     private int rozegraneMecze;
@@ -15,10 +15,6 @@ public class Klub {
         this.bramkiStracone += stracone;
         this.punkty += zdobytePunkty;
     }
-
-    //public int pobierzinformacje(){
-        
-    //}
 
     public String pobierzNazwe(){
         return nazwaKlub;

@@ -1,4 +1,4 @@
-public class Spotkanie {
+public class Spotkanie implements java.io.Serializable {
     private Klub gospodarz;
     private Klub gosc;
     private WynikMeczu wynik;
@@ -52,7 +52,7 @@ public class Spotkanie {
                 return gosc;
             }
             else{
-                return gospodarz; // zmienic bo karne!!!!!!!!
+                return gospodarz;
             }
         }
     }
