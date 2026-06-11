@@ -54,14 +54,22 @@ public class Menu {
                 break;
             case 3:
                 if (walidujCzySezonIstnieje()) {
-                    sezon.generujTerminarzSezonu();
-                    System.out.println("Terminarz/Runda został/a wygenerowany pomyslnie");
+                    try{
+                        sezon.generujTerminarzSezonu();
+                        System.out.println("Terminarz/Runda został/a wygenerowany pomyslnie");
+                    }catch(Exception e){
+                        System.out.println(e.getMessage());
+                    }   
                 }
                 break;
             case 4:
                 if (walidujCzySezonIstnieje()) {
                     System.out.println("--- AKTUALNA TABELA ---");
-                    sezon.generujTabele();
+                    try{
+                        sezon.generujTabele();
+                    }catch(Exception e){
+                        System.out.println(e.getMessage());
+                    }
                 }
                 break;
             case 5:

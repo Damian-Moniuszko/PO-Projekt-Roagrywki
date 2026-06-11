@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Spotkanie implements java.io.Serializable {
     private Klub gospodarz;
     private Klub gosc;
@@ -34,8 +36,6 @@ public class Spotkanie implements java.io.Serializable {
                 System.out.println(gosc.pobierzNazwe());
             }
         }
-        
-
     }
     public Klub pobierzZwyciezcePuchar(){
         if(czyRozegrane==false){
@@ -44,6 +44,8 @@ public class Spotkanie implements java.io.Serializable {
         }
         else{
             if(wynik.pobierzGoleGospodarz()> wynik.pobierzGoleGosc()){
+                gospodarz.aktualizujStatystyki(wynik.pobierzGoleGospodarz(), wynik.pobierzGoleGosc(), 3);
+                gosc.aktualizujStatystyki(wynik.pobierzGoleGosc(), wynik.pobierzGoleGospodarz(), 0);
                 return gospodarz;
             }
             if(wynik.pobierzGoleGospodarz()<wynik.pobierzGoleGosc()){
@@ -52,7 +54,22 @@ public class Spotkanie implements java.io.Serializable {
                 return gosc;
             }
             else{
-                return gospodarz;
+                Scanner sc = new Scanner(System.in);
+                System.out.println("REMIS! RZUTY KARNE!");
+                System.out.println("Ilość strzelonych karnych dla gospodarza: ");
+                int gospK = sc.nextInt();
+                System.out.println("Ilość strzelonych karnych dla gościa: ");
+                int goscK = sc.nextInt();
+                if(gospK>goscK){
+                    gospodarz.aktualizujStatystyki(wynik.pobierzGoleGospodarz(), wynik.pobierzGoleGosc(), 3);
+                    gosc.aktualizujStatystyki(wynik.pobierzGoleGosc(), wynik.pobierzGoleGospodarz(), 0);
+                    return gospodarz;
+                }
+                else{
+                    gospodarz.aktualizujStatystyki(wynik.pobierzGoleGospodarz(), wynik.pobierzGoleGosc(), 0);
+                    gosc.aktualizujStatystyki(wynik.pobierzGoleGosc(), wynik.pobierzGoleGospodarz(), 3);
+                    return gosc;
+                }
             }
         }
     }
